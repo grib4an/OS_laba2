@@ -12,30 +12,20 @@ namespace SmartPointers
 		int numberOfReferences;
 		const LPCWSTR mutexName = L"Mutex_Name";
 
-		T* getPointer(T* data)
-		{
-			WaitForSingleObject(mutex, INFINITE);
-
-			if (numberOfReferences == 0) {
-				numberOfReferences++;
-				ReleaseMutex(mutex);
-				return data;
-			}
-			else {
-				ReleaseMutex(mutex);
-				return NULL;
-			}
+	public:
+		SmartPointer(SmartPointer &smrt) {
+			data = smrt.data;
+			numberOfReferences = smrt.numberOfReferences;
+			numberOfReferences++;
 		}
 
-	public:
-		SmartPointer() : data(NULL), numberOfReferences(0) {}
 
 		SmartPointer(T* value) {
-			numberOfReferences = 0;
+			numberOfReferences = 1;
 			mutex = NULL;
 			if (value != NULL) {
 				mutex = CreateMutex(NULL, FALSE, mutexName);
-				data = getPointer(value);
+				data = value;
 			}
 		}
 
@@ -53,8 +43,21 @@ namespace SmartPointers
 		void release() { ReleaseMutex(mutex);}
 
 		~SmartPointer() {
-			delete data;
+			WaitForSingleObject(mutex, INFINITE);
+			remove();
+			ReleaseMutex(mutex);
+			CloseHandle(mutex);
 		}
+		
+		protected:
+		void remove() {
+			numberOfReferences--;
+			if (numberOfReferences == 0) {
+				delete data;
+				numberOfReferences = NULL;
+			}
+		}
+		
 
 	};
 }
