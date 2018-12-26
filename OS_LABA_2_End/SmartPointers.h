@@ -40,12 +40,15 @@ namespace SmartPointers
 		}
 
 		T* operator-> () {
+			T* dataTest = NULL;
 			WaitForSingleObject(mutex, INFINITE);	
-		
-			return data;	
+			dataTest = getData();
+			release();
+			return dataTest;	
 		}
 		
 
+		T* getData() { return data; }
 
 		void release() { ReleaseMutex(mutex);}
 

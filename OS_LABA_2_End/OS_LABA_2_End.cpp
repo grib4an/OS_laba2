@@ -76,11 +76,11 @@ void Function(SmartPointer<Point> &smartPoiner) {
 		GetLocalTime(&time);
 		ResetEvent(event1);
 		smartPoiner->setY(y);
-		smartPoiner.release();
+		//smartPoiner.release();
 		smartPoiner->setX(i);
-		smartPoiner.release();
+		//smartPoiner.release();
 		smartPoiner->setAddTime(to_string(int(time.wHour)) + ":" + to_string(int(time.wMinute)) + ":" + to_string(int(time.wSecond)));
-		smartPoiner.release();
+		//smartPoiner.release();
 		SetEvent(event2);
 
 	}
@@ -93,12 +93,12 @@ void Write_in_File(SmartPointer<Point> &smartPoiner) {
 		cout << "method2" << endl;
 		GetLocalTime(&time);
 		string resultat = "x=" + to_string(smartPoiner->getX()) + "y=" + to_string(smartPoiner->getY())+"||";
-		smartPoiner.release();
-		smartPoiner.release();
+		//smartPoiner.release();
+		//smartPoiner.release();
 		WriteFile(ResultFile,resultat.c_str(),resultat.size(),&ByteWriter,NULL);
 		ResetEvent(event2);
 		smartPoiner->setWriteTime(to_string(int(time.wHour)) + ":" + to_string(int(time.wMinute)) + ":" + to_string(int(time.wSecond)));
-		smartPoiner.release();
+		//smartPoiner.release();
 
 		SetEvent(event3);
 	}
@@ -110,10 +110,10 @@ void Log_in_File(SmartPointer<Point> &smartPoiner) {
 		cout << "method3" << endl;
 		string logi = "время получения значений " + to_string(smartPoiner->getX()) + " and " + to_string(smartPoiner->getY()) + ":" + smartPoiner->getAddTime() +
 			" Время записи значения" + smartPoiner->getWriteTime() + "||";
-		smartPoiner.release();
-		smartPoiner.release();
-		smartPoiner.release();
-		smartPoiner.release();
+		//smartPoiner.release();
+		//smartPoiner.release();
+		//smartPoiner.release();
+		//smartPoiner.release();
 		WriteFile(LogFile, logi.c_str(), logi.size(), &ByteWriter, NULL);
 		ResetEvent(event3);
 		SetEvent(event1);
