@@ -1,0 +1,4 @@
+﻿  OS_LABA_2_End.cpp
+c:\users\gribo\source\repos\os_laba_2_end\os_laba_2_end\os_laba_2_end.cpp(98): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
+c:\users\gribo\source\repos\os_laba_2_end\os_laba_2_end\os_laba_2_end.cpp(117): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
+  OS_LABA_2_End.vcxproj -> C:\Users\gribo\source\repos\OS_LABA_2_End\x64\Debug\OS_LABA_2_End.exe
