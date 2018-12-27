@@ -48,7 +48,6 @@ namespace SmartPointers
 			WaitForSingleObject(mutex, INFINITE);
 			remove();
 			ReleaseMutex(mutex);
-			CloseHandle(mutex);
 		}
 		
 		protected:
