@@ -56,6 +56,7 @@ namespace SmartPointers
 			if (numberOfReferences == 0) {
 				delete data;
 				numberOfReferences = NULL;
+				CloseHandle(mutex);
 			}
 		}
 		
