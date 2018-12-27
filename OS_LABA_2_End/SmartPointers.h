@@ -13,6 +13,8 @@ namespace SmartPointers
 		const LPCWSTR mutexName = L"Mutex_Name";
 
 	public:
+		SmartPointer(){}
+		
 		SmartPointer(SmartPointer &smrt) {
 			data = smrt.data;
 			numberOfReferences = smrt.numberOfReferences;
